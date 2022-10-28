@@ -12,13 +12,15 @@ import matplotlib.pyplot as plt
 pd.set_option('display.max_columns', None)
 alt.data_transformers.disable_max_rows()
 
+@st.cache(suppress_st_warning=True)
 def comb(Chart2, Chart1):
     combine = (Chart2 | Chart1).configure_axis(
     grid=False).configure_view(
     strokeWidth=0).configure_title( 
     fontSize=15,
     anchor='middle',)
-    return(st.altair_chart(combine) )
+    st.altair_chart(combine)
+    return()
 
 @st.cache
 def datasetloader():
@@ -69,17 +71,16 @@ if st.button("Project Analysis"):
   | 23. | **`weather_id`** | Weather condition id (more info Weather condition codes) |
   | 24. | **`weather_main`** | Group of weather parameters (Rain, Snow, Extreme, etc.) |
   | 25. | **`weather_description`** | Weather condition within the group |
-  | 26. | **`weather_icon`** | Weather icon id (more info Weather icon) |
-
+  | 26. | **`weather_icon`** | Weather icon id (more info Weather icon) |  
 
 The webapp will try to visualize the change in temprature and weather data and try to convey how this change in climate affects their lives and attempt in educating why various health and geological issues occur in East Lansing.  
 
 For Visualization Tools, I primarily plan on using **Seaborn, Matplotlib**, **Altair**. In the beginning, Altair and HiPlot used to end up crashing my Code Editor (VS Code) and Jupyter Kernel due to Memory issue caused by the massive dataset and creates graphs of sizes in MB due to quantity of data.`
 
 I feel this project is worthy of completion as 
-1. It helps me learn and develop the **Art of Storytelling**. Data Science is all about going through the data and trying to weave a cohesive story out of what you learned from the data and explaining it to *either* **the people above** or **the masses**.    
-1. It helps me in working on my Exploratory Data Analysis skills and helps me work on a wide array of tools and frameworks build by amazing personalities. eg. Pandas and Matplotlib.  
-1. It helps me learn more on **Data Cleaning** and try to incorporate interesting concepts like **Data Imputing and Visualization** to give the Statistical Data another perspective in the *Digital Medium*  
+ 1. It helps me learn and develop the **Art of Storytelling**. Data Science is all about going through the data and trying to weave a cohesive story out of what you learned from the data and explaining it to *either* **the people above** or **the masses**.    
+ 1. It helps me in working on my Exploratory Data Analysis skills and helps me work on a wide array of tools and frameworks build by amazing personalities. eg. Pandas and Matplotlib.  
+ 1. It helps me learn more on **Data Cleaning** and try to incorporate interesting concepts like **Data Imputing and Visualization** to give the Statistical Data another perspective in the *Digital Medium*  
     """)
 
 
@@ -164,8 +165,8 @@ if st.button("GENERATE"):
     ).interactive(
     ).properties(
         title = 'Weather Watch over the Years',
-        width=500, 
-        height=400
+        width=600, 
+        height=600
     ).configure_axis(
     grid=False).configure_view(
     strokeWidth=0).configure_title( 
