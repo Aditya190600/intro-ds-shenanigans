@@ -1,3 +1,4 @@
+from turtle import title
 import pandas as pd
 import numpy as np
 
@@ -174,8 +175,8 @@ if st.checkbox("Box plots for visualiztions over the Years"):
 
 
         maskchart = alt.Chart(r).mark_boxplot().encode(
-            x=alt.X('temp:Q', scale=alt.Scale(domain=[240, 320])), 
-            y="weather_main:N",
+            x=alt.X('temp:Q', scale=alt.Scale(domain=[240, 320]), title='Temperature(in K)'), 
+            y=alt.Y("weather_main:N", title="Weather Type"),
             color=alt.Color('weather_main:N' , legend=None, scale=scale),
         ).interactive(
         ).properties(
@@ -193,14 +194,14 @@ if st.checkbox("Box plots for visualiztions over the Years"):
 
 data2 = dataset2()
 
-if st.checkbox("2021 vs 1979 analysis"):
+if st.checkbox("1979 vs 2021 analysis"):
     mask = (data2['dt_iso'] > str(start_date)) & (data2['dt_iso'] <= str(end_date))
     range_data = data2.loc[mask]
 
     
     Chart1 = alt.Chart(range_data).mark_point().encode(
-        x='month(dt_iso):T',
-        y=alt.Y('temp_min:Q', scale=alt.Scale(domain=[240, 320])),
+        x=alt.X('month(dt_iso):T', title='Months'),
+        y=alt.Y('temp_min:Q', scale=alt.Scale(domain=[240, 320]), title='Minimum Temperature'),
         color=alt.Color('weather_main:N', legend=alt.Legend(title='Weather Type'), scale=scale),
         tooltip = ['weather_main:N', 'temp_min:Q' ],
     ).interactive(
@@ -218,8 +219,8 @@ if st.checkbox("2021 vs 1979 analysis"):
     range_data_old = data2.loc[mask_old]
 
     Chart2 = alt.Chart(range_data_old).mark_point().encode(
-        x='month(dt_iso):T',
-        y=alt.Y('temp_min:Q', scale=alt.Scale(domain=[240, 320])),
+        x=alt.X('month(dt_iso):T', title='Months'),
+        y=alt.Y('temp_min:Q', scale=alt.Scale(domain=[240, 320]), title='Minimum Temperature'),
         color=alt.Color('weather_main:N', legend=alt.Legend(title='Weather Type'), scale=scale),
         tooltip = ['weather_main:N', 'temp_min:Q' ],
     ).interactive(
@@ -228,15 +229,20 @@ if st.checkbox("2021 vs 1979 analysis"):
         width=400, 
         height=400
     )
-    comb(Chart1, Chart2)
+    comb(Chart2, Chart1)
+    st.markdown("""With the Scatterplots for 1979 and 2021, we notice that: 
+1. The Coldest days of the Years were **January and February** for 1979 but had changed to only **February** in 2021.  
+2.  The lowest recorded Temperatures were *245.98 K* for 1979 and *245.02 K* for 2021.    
+3. The Hottest Days of the Years were consistent with **August** in case both the years, where the Temperatures were around *305 K*.   
+    """)
 
-if st.checkbox("HistPlot 2021 vs 1979 analysis"):
+if st.checkbox("HistPlot 1979 vs 2021 analysis"):
     mask = (data2['dt_iso'] > str(start_date)) & (data2['dt_iso'] <= str(end_date))
     range_data = data2.loc[mask]
 
     
     ChartH2021 = alt.Chart(range_data).mark_bar().encode(
-        x='month(dt_iso):T',
+        x=alt.X('month(dt_iso):T', title='Months'),
         y='count()',
         color=alt.Color('weather_main:N', legend=alt.Legend(title='Weather Type'), scale=scale),
         tooltip = ['weather_main:N', 'count()', 'mean(temp)' ],
@@ -255,7 +261,7 @@ if st.checkbox("HistPlot 2021 vs 1979 analysis"):
     range_data_old = data2.loc[mask_old]
 
     ChartH1979 = alt.Chart(range_data_old).mark_bar().encode(
-        x='month(dt_iso):T',
+        x=alt.X('month(dt_iso):T', title='Months'),
         y='count()',
         color=alt.Color('weather_main:N', legend=alt.Legend(title='Weather Type'), scale=scale),
         tooltip = ['weather_main:N', 'count()', 'mean(temp)' ],
@@ -265,34 +271,40 @@ if st.checkbox("HistPlot 2021 vs 1979 analysis"):
         width=400, 
         height=400
     )
-    comb(ChartH2021, ChartH1979)
+    comb(ChartH1979, ChartH2021)
+    st.markdown("""With the Histplots for 1979 and 2021, we notice that: 
+1. There is a drasctic drop in the presence of Clouds over the years. From around 350 records (350/24 = 14 days )average, it had dropped to a 200 record average.  
+2.  We also notice that the cases for Clear Skies have increased drastically.    
+3. Foggy and Haze Weather climate had become Mist.   
+4. Snowy weather had become Rainy climate.
+    """)
 
 
-if st.checkbox("Avg Temp Analysis"):
+if st.checkbox("Conclusion"):
     c1 = alt.Chart(data2).mark_line().encode(
-        x='year(dt_iso):T',
-        y=alt.Y('min(temp_min)', scale=alt.Scale(domain=[240, 320])),
+        x=alt.X('year(dt_iso):T', title='Years'),
+        y=alt.Y('min(temp_min)', scale=alt.Scale(domain=[240, 320]), title='Minimum Temperature'),
         
     ).properties(
-        title = 'Averge Minimum Temperatures over the Years',
+        title = 'Minimum Temperatures over the Years',
         width=200, 
         height=200
     )
 
     c2 = alt.Chart(data2).mark_line().encode(
-        x='year(dt_iso):T',
-        y=alt.Y('mean(temp)', scale=alt.Scale(domain=[240, 320])),
+        x=alt.X('year(dt_iso):T', title='Years'),
+        y=alt.Y('mean(temp)', scale=alt.Scale(domain=[240, 320]), title='Mean Temperature'),
     ).properties(
-        title = 'Averge Temperatures over the Years',
+        title = 'Temperatures over the Years',
         width=200, 
         height=200
     )
 
     c3 = alt.Chart(data2).mark_line().encode(
-        x='year(dt_iso):T',
-        y=alt.Y('max(temp_max)', scale=alt.Scale(domain=[240, 320])),
+        x=alt.X('year(dt_iso):T', title='Years'),
+        y=alt.Y('max(temp_max)', scale=alt.Scale(domain=[240, 320]), title='Maximum Temperature'),
     ).properties(
-        title = 'Averge Maximum Temperatures over the Years',
+        title = 'Maximum Temperatures over the Years',
         width=200, 
         height=200
     )
@@ -304,4 +316,9 @@ if st.checkbox("Avg Temp Analysis"):
         anchor='middle',)
 
     st.altair_chart(temp_ranges_over)
+    st.markdown(""" ### Conclusion  
+We notice with the above graphs that there have been many changes in weather patterns over the past years.  
+These patterns could be related to various underlying factors. The primary cause could be attributed to **Climate Change** and **Global Warming**.  
+But also there is a increase in the Minimum Temperatures and a drop in Maximum Temperatures post 2020. This could be attributed to the COVID Pandemic Lockdowns.
 
+""")
