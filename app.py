@@ -180,8 +180,8 @@ if st.checkbox("Box plots for visualiztions over the Years"):
         ).interactive(
         ).properties(
             title = 'Weather Watch over the Years',
+            height = 500,
             width=600, 
-            height=600
         ).configure_axis(
         grid=False).configure_view(
         strokeWidth=0).configure_title( 
