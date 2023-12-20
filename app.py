@@ -120,9 +120,9 @@ st.write("""
 # East Lansing Weather Analysis over 1979 to 2022
 """)
 
-source0 = "https://aimlessfox.s3.amazonaws.com/weather_EL.csv"
-source1 = "https://aimlessfox.s3.amazonaws.com/Cleaned_Weather_EL.csv"
-source2 = "https://aimlessfox.s3.amazonaws.com/Dropped_Weather_EL.csv"
+source0 = "data/weather_EL.csv"
+source1 = "data/Cleaned_Weather_EL.csv"
+source2 = "data/Dropped_Weather_EL.csv"
 
 st.sidebar.write("# Hey what are you gonna do today")
 bar = st.sidebar.radio(" ",('Problem Statements & Everything Data','Data Analysis and Visualizations','Machine Learning and Everything else.', 'Predictions', 'Final Words'))
