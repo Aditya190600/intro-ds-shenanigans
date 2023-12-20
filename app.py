@@ -184,7 +184,7 @@ I feel this project is worthy of completion as
 
 
     if st.button("Dataset"):
-        st.write("[Dataset Link](https://aimlessfox.s3.amazonaws.com/weather_EL.csv)")
+        st.write("[Dataset Link](https://raw.githubusercontent.com/Aditya190600/intro-ds-shenanigans/main/data/weather_EL.csv)")
 
     data0 = datasetloader()
 
