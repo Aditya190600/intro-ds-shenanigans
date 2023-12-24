@@ -136,7 +136,7 @@ st.write("""
 # East Lansing Weather Analysis over 1979 to 2022
 """)
 
-image1 = Image.open("/Users/aimlessfox/Desktop/Projects/EL Weather Analysis/images/meme.png")
+image1 = Image.open("images/meme.png")
 
 col1, col2, col3 = st.columns([1, .6, 1])
 with col1:
