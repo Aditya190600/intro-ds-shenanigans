@@ -9,7 +9,7 @@ import seaborn as sns
 import altair as alt
 import matplotlib.pyplot as plt
 import plotly.express as px
-
+from PIL import Image
 
 #Scaling libraries
 from sklearn.preprocessing import StandardScaler
@@ -110,15 +110,42 @@ def dTree_classifier(X_train, X_test, y_train, y_test):
     st.write(df)
 
 
+st.set_page_config( 
+    page_title="East Lansing Weather Analysis",
+                page_icon="🌦️",
+                layout="wide",
+                initial_sidebar_state="auto")
 
 
-
-
-
+## Edit done to Streamlit Markdown to center images when kept in full screen
+st.markdown(
+    """
+    <style>
+        button[title^=Exit]+div [data-testid=stImage]{
+            text-align: center;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+    </style>
+    """, unsafe_allow_html=True
+)
 
 st.write("""
 # East Lansing Weather Analysis over 1979 to 2022
 """)
+
+image1 = Image.open("/Users/aimlessfox/Desktop/Projects/EL Weather Analysis/images/meme.png")
+
+col1, col2, col3 = st.columns([1, .6, 1])
+with col1:
+    st.write(' ')
+with col2:
+    st.image(image1, caption="Let's start with some facts about Weather ...", width=150, use_column_width = True)
+with col3:
+    st.write(' ')
+
 
 source0 = "data/weather_EL.csv"
 source1 = "data/Cleaned_Weather_EL.csv"
