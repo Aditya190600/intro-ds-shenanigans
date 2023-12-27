@@ -1,0 +1,36 @@
+﻿Code,Weather,Description,Icon Day,Icon Night
+200,Thunderstorm,Thunderstorm With Light Rain,11d,11n
+201,Thunderstorm,Thunderstorm With Rain,11d,11n
+202,Thunderstorm,Thunderstorm With Heavy Rain,11d,11n
+211,Thunderstorm,"Thunderstorm, Proximity Thunderstorm",11d,11n
+300,Drizzle,Light Intensity Drizzle,09d,09n
+301,Drizzle,Drizzle,09d,09n
+302,Drizzle,Heavy Intensity Drizzle,09d,09n
+321,Drizzle,Shower Drizzle,09d,09n
+500,Rain,Light Rain,10d,10n
+501,Rain,Moderate Rain,10d,10n
+502,Rain,Heavy Intensity Rain,10d,10n
+503,Rain,Very Heavy Rain,10d,10n
+511,Rain,Freezing Rain,13d,13n
+520,Rain,Light Intensity Shower Rain,09d,09n
+521,Rain,Shower Rain,09d,09n
+522,Rain,Heavy Intensity Shower Rain,09d,09n
+600,Snow,Light Snow,13d,13n
+601,Snow,Snow,13d,13n
+602,Snow,Heavy Snow,13d,13n
+611,Snow,Sleet,13d,13n
+615,Snow,Light Rain And Snow,13d,13n
+616,Snow,Rain And Snow,13d,13n
+620,Snow,Light Shower Snow,13d,13n
+621,Snow,Shower Snow,13d,13n
+701,Mist,Mist,50d,50n
+711,Smoke,Smoke,50d,50n
+721,Haze,Haze,50d,50n
+741,Fog,Fog,50d,50n
+761,Dust,Dust,50d,50n
+771,Squall,Squalls,50d,50n
+800,Clear,Sky Is Clear,01d,01n
+801,Clouds,Few Clouds,02d,02n
+802,Clouds,Scattered Clouds,03d,03n
+803,Clouds,Broken Clouds,04d,04n
+804,Clouds,Overcast Clouds,04d,04n

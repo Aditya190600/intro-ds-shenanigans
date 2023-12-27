@@ -136,27 +136,28 @@ st.write("""
 # East Lansing Weather Analysis over 1979 to 2022
 """)
 
-image1 = Image.open("images/meme.png")
-
-col1, col2, col3 = st.columns([1, .6, 1])
-with col1:
-    st.write(' ')
-with col2:
-    st.image(image1, caption="Let's start with some facts about Weather ...", width=150, use_column_width = True)
-with col3:
-    st.write(' ')
-
 
 source0 = "data/weather_EL.csv"
 source1 = "data/Cleaned_Weather_EL.csv"
 source2 = "data/Dropped_Weather_EL.csv"
 
 st.sidebar.write("# Hey what are you gonna do today")
-bar = st.sidebar.radio(" ",('Problem Statements & Everything Data','Data Analysis and Visualizations','Machine Learning and Everything else.', 'Predictions', 'Final Words'))
+bar = st.sidebar.radio(" ",('Problem Statement & Data','Data Analysis and Visualizations','Machine Learning', 'Predictions', 'Final Words'))
 
-if(bar == 'Problem Statements & Everything Data'):
+if(bar == 'Problem Statement & Data'):
 
-    st.write("⚠️ **STATUATORY WARNING** Some graphs might not load in Firefox Browser. You are kindly requested to view using an alternative browser.")
+    st.warning("⚠️"+" &nbsp;  &nbsp;" +"  **STATUATORY WARNING:** Some graphs might not load in Firefox Browser. You are kindly requested to view using an alternative browser.")
+    
+    image1 = Image.open("images/meme.png")
+
+    col1, col2, col3 = st.columns([1, .6, 1])
+    with col1:
+        st.write(' ')
+    with col2:
+        st.image(image1, caption="Let's start with some facts about Weather ...", width=150, use_column_width = True)
+    with col3:
+        st.write(' ')
+
     st.markdown("## Project Analysis")
     st.markdown('Our primary goal in this project is to **`Analyze the change in weather patterns over the period from 1979 to 2022 and see if there are any changes in weather patterns over East Lansing.  '
         '`** The big picture is it can be co-related with the population change of the area to see the effects of the human population on nature. '
@@ -194,9 +195,11 @@ if(bar == 'Problem Statements & Everything Data'):
 | 24. | **`weather_main`** | Group of weather parameters (Rain, Snow, Extreme, etc.) |
 | 25. | **`weather_description`** | Weather condition within the group |
 | 26. | **`weather_icon`** | Weather icon id (more info Weather icon) |  
+""" )
+    st.markdown("## Problem Statement")
 
-   
-
+    st.markdown(
+"""
 The webapp will try to visualize the change in temprature and weather data and try to convey how this change in climate affects their lives and attempt in educating why various health and geological issues occur in East Lansing.  
 
 For Visualization Tools, I primarily plan on using **Seaborn, Matplotlib**, **Altair**. In the beginning, Altair and HiPlot used to end up crashing my Code Editor (VS Code) and Jupyter Kernel due to Memory issue caused by the massive
@@ -210,8 +213,10 @@ I feel this project is worthy of completion as
 
 
 
-    if st.button("Dataset"):
-        st.write("[Dataset Link](https://raw.githubusercontent.com/Aditya190600/intro-ds-shenanigans/main/data/weather_EL.csv)")
+    st.link_button(label= "Dataset", 
+                    url = "https://raw.githubusercontent.com/Aditya190600/intro-ds-shenanigans/main/data/weather_EL.csv", 
+                    help = "The repository for the original dataset used in this project", 
+                    type = "secondary")
 
     data0 = datasetloader()
 
@@ -435,7 +440,7 @@ if(bar == 'Data Analysis and Visualizations'):
     """)
 
 
-if(bar == 'Machine Learning and Everything else.'):
+if(bar == 'Machine Learning'):
     data1 = dataset1()
 
     category_encode = {"weather_main": {'Fog': 0, 'Clouds': 1, 'Snow': 2, 'Clear': 3, 'Haze': 4, 'Drizzle': 5, 'Rain': 6,
