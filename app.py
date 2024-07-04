@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 import streamlit as st
-from st_pages import Page, show_pages, add_page_title
+from st_pages import Page, Section, show_pages, add_page_title
 import datetime
 
 # Visualization Libraries
@@ -113,30 +113,50 @@ def dTree_classifier(X_train, X_test, y_train, y_test):
 
 show_pages(
         [
-            Page("pages/1_📖_Problem_Statement.py", "Home", "🏠"),
-            # Can use :<icon-name>: or the actual icon
-            Page("pages/2_📈_Data_Analysis_and_Visualization.py", "Example One", ":books:"),
-            # Since this is a Section, all the pages underneath it will be indented
-            # The section itself will look like a normal page, but it won't be clickable
-            Section(name="Machine Learning and Stuff", icon="🤖"),
-            # The pages appear in the order you pass them
-            Page("pages/4_🧐_Regression_Analysis.py", "Example Four", "📖"),
-            Page("pages/5_🧐_Classification_Analysis.py", "Example Two", "✏️"),
-            Page("pages/6_🧐_Time_Series_Analysis.py", "Example Two", "✏️"),
-            
-            Section(name="Other apps", icon=":horse:"),
-            # Will use the default icon and name based on the filename if you don't
-            # pass them
-            Page("pages/7_Predictions.py"),
-            # You can also pass in_section=False to a page to make it un-indented
-            Page("pages/8_Final_Results.py", "Example Five", "🏁", in_section=False),
+            Page(path="pages/1_📖_Problem_Statement.py",
+                 name="Problem Statement",
+                 icon="📖", ),
+
+            Page(path="pages/2_📈_Data_Analysis_and_Visualization.py",
+                 name="Data Analysis and Visualizations",
+                 icon="📈", ),
+
+
+            Section(name="Machine Learning and Stuff",
+                    icon="🤖"
+                    ),
+            Page(path="pages/4_🧐_Regression_Analysis.py",
+                 name="Regression Analysis",
+                 icon="🧐", 
+                 in_section=True),
+
+            Page(path="pages/5_🧐_Classification_Analysis.py",
+                 name="Classification Analysis",
+                 icon="🧐", 
+                 in_section=True),
+
+            Page(path="pages/6_🧐_Time_Series_Analysis.py",
+                 name="Time-Series Analysis",
+                 icon="🧐", 
+                 in_section=True),
+
+            Page(path="pages/7_Predictions.py",
+                name="Predictions",
+                icon="📊", 
+                in_section=True),
+
+            Page(path="pages/8_Final_Results.py",
+                name="Final Results and Conclusion",
+                icon="🏁", 
+                in_section=False),
+
+
         ]
     )
 
 
-
-st.set_page_config( 
-    page_title="East Lansing Weather Analysis",
+add_page_title(
+                page_title="East Lansing Weather Analysis",
                 page_icon="🌦️",
                 layout="wide",
                 initial_sidebar_state="auto")

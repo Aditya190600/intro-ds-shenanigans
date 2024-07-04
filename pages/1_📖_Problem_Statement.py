@@ -7,7 +7,7 @@ from PIL import Image
 
 from st_pages import add_page_title
 
-add_page_title(page_title="East Lansing Weather Analysis",
+add_page_title(page_title="Problem Statement",
                 page_icon="🌦️",
                 layout="wide",
                 initial_sidebar_state="auto")

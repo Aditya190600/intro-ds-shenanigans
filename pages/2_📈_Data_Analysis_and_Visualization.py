@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import os
 import streamlit as st
+from st_pages import add_page_title
+
 import datetime
 
 # Visualization Libraries
@@ -11,8 +13,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 from PIL import Image
 
-
-st.set_page_config(page_title="Data Analysis and Visualizations", 
+add_page_title(page_title="Data Analysis and Visualizations", 
                    page_icon="📈",
                    layout="wide",
                    initial_sidebar_state="auto")
