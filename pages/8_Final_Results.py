@@ -8,4 +8,3 @@ add_page_title(page_title="Final Results",
                    initial_sidebar_state="auto")
 
 st.write("Thank you for viewing this project of mine from start to finish.")
-st.write("I wanted to mention a few more words before closing up")
