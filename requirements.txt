@@ -11,3 +11,4 @@ latexify-py==0.4.2
 tensorflow==2.7.0
 tensorflow-addons
 st-pages==0.5.0
+prophet
