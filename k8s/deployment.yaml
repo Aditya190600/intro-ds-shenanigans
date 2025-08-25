@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather-analysis-app
+  labels:
+    app: weather-analysis
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: weather-analysis
+  template:
+    metadata:
+      labels:
+        app: weather-analysis
+    spec:
+      containers:
+      - name: weather-analysis
+        image: weather-analysis:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8501
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+        livenessProbe:
+          httpGet:
+            path: /_stcore/health
+            port: 8501
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /_stcore/health
+            port: 8501
+          initialDelaySeconds: 5
+          periodSeconds: 5
